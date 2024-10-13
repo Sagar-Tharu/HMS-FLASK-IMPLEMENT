@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Patient</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Add New Patient</h1>
+        <form action="{{ url_for('new_patient') }}" method="POST">
+            <div class="mt-4">
+                <a href="{{ url_for('all_patients') }}" class="btn btn-secondary">Back to Patients List</a>
+                <a href="{{ url_for('dashboard') }}" class="btn btn-info">Go to Dashboard</a>
+            </div>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="contact">Contact:</label>
+                <input type="text" class="form-control" name="contact" required>
+            </div>
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" class="form-control" name="age" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <input type="text" class="form-control" name="address" required>
+            </div>
+            <div class="form-group">
+                <label for="causes">Causes:</label>
+                <input type="text" class="form-control" name="causes" required>
+            </div>
+            <div class="form-group">
+                <label for="date_time">Date and Time:</label>
+                <input type="datetime-local" class="form-control" name="date_time" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Patient</button>
+        </form>
+        <div class="mt-4">
+            <a href="{{ url_for('all_patients') }}" class="btn btn-secondary">Back to Patients List</a>
+            <a href="{{ url_for('dashboard') }}" class="btn btn-info">Go to Dashboard</a>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Patient</title>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Add New Patient</h1>
+        <form action="{{ url_for('new_patient') }}" method="POST" onsubmit="setDateTime()">
+            <div class="mt-4">
+                <a href="{{ url_for('all_patients') }}" class="btn btn-secondary">Back to Patients List</a>
+                <a href="{{ url_for('dashboard') }}" class="btn btn-info">Go to Dashboard</a>
+            </div>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="contact">Contact:</label>
+                <input type="text" class="form-control" name="contact" required>
+            </div>
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" class="form-control" name="age" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <input type="text" class="form-control" name="address" required>
+            </div>
+            <div class="form-group">
+                <label for="causes">Causes:</label>
+                <input type="text" class="form-control" name="causes" required>
+            </div>
+            <input type="hidden" name="date_time" id="date_time">
+            <button type="submit" class="btn btn-primary">Add Patient</button>
+        </form>
+        <div class="mt-4">
+            <a href="{{ url_for('all_patients') }}" class="btn btn-secondary">Back to Patients List</a>
+            <a href="{{ url_for('dashboard') }}" class="btn btn-info">Go to Dashboard</a>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function setDateTime() {
+            const now = new Date();
+            const isoDateTime = now.toISOString().slice(0, 16);
+            document.getElementById('date_time').value = isoDateTime;
+        }
+    </script>
+</body>
+</html>
+
+-->

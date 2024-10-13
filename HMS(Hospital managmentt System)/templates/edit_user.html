@@ -1,0 +1,44 @@
+{% extends "admin_base.html" %}
+
+{% block title %}Edit User{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+    <h1>Update User</h1>
+    <form method="POST">
+        <div class="mb-3">
+            <label for="username" class="form-label">Username:</label>
+            <input type="text" class="form-control" name="username" value="{{ user.username }}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="email" class="form-label">Email:</label>
+            <input type="email" class="form-control" name="email" value="{{ user.email }}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="full_name" class="form-label">Full Name:</label>
+            <input type="text" class="form-control" name="full_name" value="{{ user.full_name }}">
+        </div>
+
+        <div class="mb-3">
+            <label for="address" class="form-label">Address:</label>
+            <input type="text" class="form-control" name="address" value="{{ user.address }}">
+        </div>
+
+        <div class="mb-3">
+            <label for="new_password" class="form-label">New Password:</label>
+            <input type="password" class="form-control" name="new_password" placeholder="Leave blank to keep current password">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update User</button>
+    </form>
+
+    <div class="mt-3">
+        <a href="{{ url_for('all_users') }}" class="btn btn-secondary">Back to Users List</a>
+        <a href="{{ url_for('dashboard') }}" class="btn btn-outline-secondary">Go to Dashboard</a>
+    </div>
+</div>
+
+{% endblock %}

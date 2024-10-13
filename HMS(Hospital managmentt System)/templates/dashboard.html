@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Welcome to the Dashboard!</h1>
+    <nav>
+        <a href="{{ url_for('new_patient') }}">Add New Patient</a>
+        <a href="{{ url_for('all_patients') }}">View All Patients</a>
+        <a href="{{ url_for('download_patients') }}">Download Patients</a>
+        <a href="{{ url_for('new_staff') }}">Add New Staff</a>
+        <a href="{{ url_for('all_staff') }}">View All Staff</a>
+        <a href="{{ url_for('download_staff') }}">Download Staff</a>
+        <a href="{{ url_for('new_doctor') }}">Add New Doctor</a>
+        <a href="{{ url_for('all_doctors') }}">View All Doctors</a>
+        <a href="{{ url_for('download_doctors') }}">Download Doctors</a>
+        <a href="{{ url_for('new_appointment') }}">Schedule New Appointment</a>
+        <a href="{{ url_for('all_appointments') }}">View All Appointments</a>
+        <a href="{{ url_for('download_appointments') }}">Download Appointments</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </nav>
+</body>
+</html>

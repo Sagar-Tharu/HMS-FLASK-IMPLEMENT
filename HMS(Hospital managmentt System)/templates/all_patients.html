@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Patients</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">All Patients</h1>
+        <div class="mt-4">
+            <a href="{{ url_for('new_patient') }}" class="btn btn-primary">Add New Patient</a>
+            <a href="{{ url_for('download_patients') }}" class="btn btn-secondary">Download Patients as Excel</a>
+            <a href="{{ url_for('dashboard') }}" class="btn btn-info">Go to Dashboard</a>
+        </div>
+        <table class="table table-bordered table-striped">
+            <thead class="thead-light">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Contact</th>
+                    <th>Age</th>
+                    <th>Address</th>
+                    <th>Causes</th>
+                    <th>Date and Time</th>
+                    <th>Actions</th> <!-- Added Actions column -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for patient in patients %}
+                <tr>
+                    <td>{{ patient.id }}</td>
+                    <td>{{ patient.name }}</td>
+                    <td>{{ patient.contact }}</td>
+                    <td>{{ patient.age }}</td>
+                    <td>{{ patient.address }}</td>
+                    <td>{{ patient.causes }}</td>
+                    <td>{{ patient.date_time.strftime('%Y-%m-%d %H:%M') }}</td>
+                    <td>
+                        <a href="{{ url_for('edit_patient', patient_id=patient.id) }}" class="btn btn-warning btn-sm">Edit</a>
+                        <form action="{{ url_for('delete_patient', patient_id=patient.id) }}" method="POST" style="display:inline;">
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this patient?');">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

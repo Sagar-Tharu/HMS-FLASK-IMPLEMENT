@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Staff</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom styles */
+        body {
+            background-color: #f4f7fa;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        table {
+            margin-top: 20px;
+        }
+
+        th {
+            background-color: #007bff;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        td {
+            text-align: center;
+        }
+
+        .btn {
+            margin: 0 5px;
+        }
+
+        /* Responsive Design for small screens */
+        @media (max-width: 768px) {
+            table,
+            thead,
+            tbody,
+            th,
+            td,
+            tr {
+                display: block;
+            }
+
+            thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+
+            tr {
+                margin-bottom: 15px;
+            }
+
+            td {
+                text-align: right;
+                padding-left: 50%;
+                position: relative;
+            }
+
+            td:before {
+                position: absolute;
+                left: 10px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+            }
+
+            td:nth-of-type(1):before { content: "Name"; }
+            td:nth-of-type(2):before { content: "Address"; }
+            td:nth-of-type(3):before { content: "Contact"; }
+            td:nth-of-type(4):before { content: "Email"; }
+            td:nth-of-type(5):before { content: "Qualification"; }
+            td:nth-of-type(6):before { content: "Experience"; }
+            td:nth-of-type(7):before { content: "DOB"; }
+            td:nth-of-type(8):before { content: "Role"; }
+            td:nth-of-type(9):before { content: "Date/Time"; }
+            td:nth-of-type(10):before { content: "Age"; }
+            td:nth-of-type(11):before { content: "Actions"; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container mt-4">
+        <h1>Staff List</h1>
+        <div class="mb-3">
+            <a href="{{ url_for('new_staff') }}" class="btn btn-primary">Add New Staff</a>
+            <a href="{{ url_for('download_staff') }}" class="btn btn-success">Download Staff List (Excel)</a>
+            <a href="{{ url_for('new_doctor') }}" class="btn btn-info">Go to Doctor Registration</a>
+            <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">Go to Dashboard</a>
+        </div>
+
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Contact</th>
+                    <th>Email</th>
+                    <th>Qualification</th>
+                    <th>Experience</th>
+                    <th>DOB</th>
+                    <th>Role</th>
+                    <th>Date/Time</th>
+                    <th>Age</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for staff in staffs %}
+                <tr>
+                    <td>{{ staff.name }}</td>
+                    <td>{{ staff.address }}</td>
+                    <td>{{ staff.contact }}</td>
+                    <td>{{ staff.email }}</td>
+                    <td>{{ staff.qualification }}</td>
+                    <td>{{ staff.experience }}</td>
+                    <td>{{ staff.dob.strftime('%Y-%m-%d') }}</td>
+                    <td>{{ staff.role }}</td>
+                    <td>{{ staff.date_time.strftime('%Y-%m-%d %H:%M') }}</td>
+                    <td>{{ staff.age }}</td>
+                    <td>
+                        <a href="{{ url_for('edit_staff', staff_id=staff.id) }}" class="btn btn-warning btn-sm">Edit</a>
+                        <form action="{{ url_for('delete_staff', staff_id=staff.id) }}" method="POST" style="display:inline;">
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this staff member?');">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

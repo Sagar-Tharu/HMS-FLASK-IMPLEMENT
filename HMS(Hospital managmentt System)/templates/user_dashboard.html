@@ -1,0 +1,50 @@
+
+{% extends "user_base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+    <!-- Main content -->
+        <div class="bg-body-tertiary p-5 rounded">
+            <h1 class="text-center">Welcome to Hospital Management System</h1>
+            <p class="lead text-center">Manage patients, staff, and more. Use the navigation to get started.</p>
+
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-4">
+                    <a class="btn btn-lg btn-primary w-100" href="{{ url_for('new_patient') }}">
+                        <i class="bi bi-person-plus-fill"></i> New Patient &raquo;
+                    </a>
+                </div>
+                <div class="col-12 col-md-4">
+                    <a class="btn btn-lg btn-primary w-100" href="{{ url_for('all_patients') }}">
+                        <i class="bi bi-person-lines-fill"></i> All Patients &raquo;
+                    </a>
+                </div>
+                <div class="col-12 col-md-4">
+                    <a class="btn btn-lg btn-primary w-100" href="{{ url_for('new_staff') }}">
+                        <i class="bi bi-person-add"></i> New Staff &raquo;
+                    </a>
+                </div>
+            </div>
+
+            <div class="row justify-content-center mt-3">
+                <div class="col-12 col-md-4">
+                    <a class="btn btn-lg btn-primary w-100" href="{{ url_for('all_staff') }}">
+                        <i class="bi bi-wallet-fill"></i> All Staff &raquo;
+                    </a>
+                </div>
+                <div class="col-12 col-md-4">
+                    <a class="btn btn-lg btn-primary w-100" href="{{ url_for('new_appointment') }}">
+                        <i class="bi bi-calendar-plus-fill"></i> Appointment &raquo;
+                    </a>
+                </div>
+
+                <div class="col-12 col-md-4">
+                    <a class="btn btn-lg btn-primary w-100" href="{{ url_for('logout') }}">
+                        <i class="bi bi-box-arrow-right"></i> Logout &raquo;
+                    </a>
+                </div>
+            </div>
+        </div>
+
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "admin_base.html" %}
+
+{% block title %}New User{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>Add New User</h1>
+    <form action="{{ url_for('new_user') }}" method="POST">
+        <div class="mb-3">
+            <label for="username" class="form-label">Username:</label>
+            <input type="text" class="form-control" name="username" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="password" class="form-label">Password:</label>
+            <input type="password" class="form-control" name="password" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="role" class="form-label">Role:</label>
+            <select name="role" class="form-select" required>
+                <option value="" disabled selected>Select Role</option>
+                <option value="admin">Admin</option>
+                <option value="user">User</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="email" class="form-label">Email:</label>
+            <input type="email" class="form-control" name="email" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="full_name" class="form-label">Full Name:</label>
+            <input type="text" class="form-control" name="full_name" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="address" class="form-label">Address:</label>
+            <input type="text" class="form-control" name="address">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add User</button>
+    </form>
+
+    <div class="mt-3">
+        <a href="{{ url_for('all_users') }}" class="btn btn-secondary">Back to Users List</a>
+        <a href="{{ url_for('dashboard') }}" class="btn btn-outline-secondary">Go to Dashboard</a>
+    </div>
+</div>
+{% endblock %}

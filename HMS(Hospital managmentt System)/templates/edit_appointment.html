@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Appointment</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Edit Appointment</h1>
+        <form action="{{ url_for('edit_appointment', appointment_id=appointment.id) }}" method="POST">
+            <div class="form-group">
+                <label for="patient_id">Patient ID:</label>
+                <select class="form-control" name="patient_id" required>
+                    {% for patient in patients %}
+                    <option value="{{ patient.id }}" {% if patient.id == appointment.patient_id %}selected{% endif %}>{{ patient.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="doctor_id">Doctor ID:</label>
+                <select class="form-control" name="doctor_id" required>
+                    {% for doctor in doctors %}
+                    <option value="{{ doctor.id }}" {% if doctor.id == appointment.doctor_id %}selected{% endif %}>{{ doctor.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="date_time">Date and Time:</label>
+                <input type="datetime-local" class="form-control" name="date_time" value="{{ appointment.date_time.strftime('%Y-%m-%dT%H:%M') }}" required>
+            </div>
+            <div class="form-group">
+                <label for="reason">Reason:</label>
+                <input type="text" class="form-control" name="reason" value="{{ appointment.reason }}" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Update Appointment</button>
+        </form>
+        <div class="mt-4">
+            <a href="{{ url_for('all_appointments') }}" class="btn btn-secondary">Back to Appointments List</a>
+            <a href="{{ url_for('dashboard') }}" class="btn btn-info">Go to Dashboard</a>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

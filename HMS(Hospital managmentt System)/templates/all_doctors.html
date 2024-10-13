@@ -1,0 +1,109 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Doctors</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">All Doctors</h1>
+        <table class="table table-bordered table-striped">
+            <thead class="thead-light">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Specialization</th>
+                    <th>Contact</th>
+                    <th>Qualification</th>
+                    <th>Experience</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for doctor in doctors %}
+                <tr>
+                    <td>{{ doctor.id }}</td>
+                    <td>{{ doctor.name }}</td>
+                    <td>{{ doctor.specialization }}</td>
+                    <td>{{ doctor.contact }}</td>
+                    <td>{{ doctor.qualification }}</td>
+                    <td>{{ doctor.experience }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="mt-4">
+            <a href="{{ url_for('new_doctor') }}" class="btn btn-primary">Add New Doctor</a>
+            <a href="{{ url_for('download_doctors') }}" class="btn btn-secondary">Download Doctors as Excel</a>
+            <a href="{{ url_for('all_staff') }}" class="btn btn-info">Go to Staff list</a>
+            <a href="{{ url_for('dashboard') }}" class="btn btn-info">Go to Dashboard</a>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Doctors</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">All Doctors</h1>
+        <a href="{{ url_for('new_doctor') }}" class="btn btn-primary mb-3">Add New Doctor</a>
+        <a href="{{ url_for('new_staff') }}" class="btn btn-info mb-3">Go to Staff Registration</a>
+        <a href="{{ url_for('download_doctors') }}" class="btn btn-success mb-3">Download Doctors as Excel</a>
+        <a href="{{ url_for('dashboard') }}" class="btn btn-info mb-3">Go to Dashboard</a>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Specialization</th>
+                    <th>Contact</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    <th>Qualification</th>
+                    <th>Experience</th>
+                    <th>DOB</th>
+                    <th>Age</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for doctor in doctors %}
+                <tr>
+                    <td>{{ doctor.name }}</td>
+                    <td>{{ doctor.specialization }}</td>
+                    <td>{{ doctor.contact }}</td>
+                    <td>{{ doctor.email }}</td>
+                    <td>{{ doctor.address }}</td>
+                    <td>{{ doctor.qualification }}</td>
+                    <td>{{ doctor.experience }}</td>
+                    <td>{{ doctor.dob.strftime('%Y-%m-%d') }}</td>
+                    <td>{{ doctor.age }}</td>
+                    <td>
+                        <a href="{{ url_for('edit_doctor', doctor_id=doctor.id) }}">
+                            <button class="btn btn-warning btn-sm">Edit</button>
+                        </a>
+                        <form action="{{ url_for('delete_doctor', doctor_id=doctor.id) }}" method="POST" style="display:inline;">
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this doctor?');">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

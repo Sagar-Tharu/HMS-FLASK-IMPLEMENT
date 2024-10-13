@@ -1,0 +1,114 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>About</title>
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light background color */
+        }
+
+        header {
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            margin-top: 100px; /* Adjust for vertical alignment */
+        }
+
+        h2 {
+            margin-bottom: 20px; /* Space below the header */
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3; /* Darker shade on hover */
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                margin-top: 50px; /* Less margin on smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-light p-3">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="/">Hospital Management System</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">About</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header> -->
+
+{% extends "base.html" %}
+
+{% block title %}About{% endblock %}
+    
+    {% block content %}
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">About the Hospital Management System</h1>
+        <p class="lead text-center">This is an about page that contains all information about the system.</p>
+        
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">Hospital Management System Overview</h2>
+                <p class="card-text">
+                    The Hospital Management System (HMS) is a comprehensive software solution designed to streamline and automate various hospital operations, improving patient care and staff efficiency. Our system is tailored to meet the unique needs of hospitals, clinics, and healthcare organizations, providing a centralized platform for managing patient data, appointments, billing, and more.
+                </p>
+
+                <h3>Key Features</h3>
+                <ul>
+                    <li><strong>Patient Management:</strong> Store and manage patient records, including demographics, medical history, and treatment plans.</li>
+                    <li><strong>Appointment Scheduling:</strong> Book and manage appointments, including scheduling, reminders, and cancellations.</li>
+                    <li><strong>Billing and Insurance:</strong> Process claims and facilitate online payments, ensuring seamless financial transactions.</li>
+                    <li><strong>Electronic Health Records (EHR):</strong> Store and access patient data electronically, reducing paperwork and improving data accuracy.</li>
+                    <li><strong>Laboratory Information System (LIS):</strong> Manage lab test results, including ordering, tracking, and reporting.</li>
+                    <li><strong>Pharmacy Management:</strong> Track medication inventory, orders, and dispensing, ensuring accurate and efficient medication management.</li>
+                </ul>
+
+                <h3>Benefits</h3>
+                <ul>
+                    <li><strong>Improved Patient Care:</strong> Enhanced data accessibility and accuracy enable healthcare providers to deliver more effective and personalized care.</li>
+                    <li><strong>Increased Efficiency:</strong> Automated processes reduce administrative burdens, freeing staff to focus on patient care.</li>
+                    <li><strong>Better Decision-Making:</strong> Data-driven insights and analytics support informed decision-making, optimizing hospital operations and resource allocation.</li>
+                    <li><strong>Compliance:</strong> Our system ensures compliance with regulatory requirements, reducing the risk of non-compliance and associated penalties.</li>
+                </ul>
+
+                <h3>Design and Development</h3>
+                <p>
+                    Our HMS is designed with user-friendliness and flexibility in mind, featuring a customizable interface and modular architecture. Our team of experienced developers and healthcare experts has carefully crafted the system to meet the evolving needs of hospitals and healthcare organizations.
+                </p>
+
+                <h3>Why Choose Our Hospital Management System</h3>
+                <ul>
+                    <li><strong>Scalability:</strong> Our system adapts to the growing needs of your hospital or healthcare organization.</li>
+                    <li><strong>Customization:</strong> Tailor the system to your specific requirements and workflows.</li>
+                    <li><strong>Support:</strong> Our dedicated team provides ongoing support and training to ensure a smooth implementation and optimal system usage.</li>
+                </ul>
+
+                <h3>Join the Ranks of Satisfied Customers</h3>
+                <p>
+                    Our Hospital Management System has been successfully implemented in numerous hospitals and healthcare organizations, resulting in improved patient care, reduced costs, and enhanced operational efficiency. Join the growing community of satisfied customers and discover the benefits of our comprehensive HMS solution.
+                </p>
+            </div>
+        </div>
+    </div>
+    
+{%endblock%}

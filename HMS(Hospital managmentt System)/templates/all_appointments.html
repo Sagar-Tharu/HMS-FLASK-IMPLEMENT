@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Appointments</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">All Appointments</h1>
+        <div class="mt-4">
+            <a href="{{ url_for('new_appointment') }}" class="btn btn-primary">Schedule New Appointment</a>
+            <a href="{{ url_for('download_appointments') }}" class="btn btn-secondary">Download Appointments as Excel</a>
+            <a href="{{ url_for('dashboard') }}" class="btn btn-info">Go to Dashboard</a>
+        </div>
+        <table class="table table-bordered table-striped">
+            <thead class="thead-light">
+                <tr>
+                    <th>Appointment ID</th>
+                    <th>Patient Name</th>
+                    <th>Doctor Name</th>
+                    <th>Date and Time</th>
+                    <th>Reason</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for appointment in appointments %}
+                <tr>
+                    <td>{{ appointment.id }}</td>
+                    <td>{{ appointment.patient.name }}</td>
+                    <td>{{ appointment.doctor.name }}</td>
+                    <td>{{ appointment.date_time }}</td>
+                    <td>{{ appointment.reason }}</td>
+                    <td>
+                        <a href="{{ url_for('edit_appointment', appointment_id=appointment.id) }}">
+                            <button class="btn btn-info">Edit</button>
+                        </a>
+                         <!-- <form action="{{ url_for('edit_appointment', appointment_id=appointment.id) }}" method="POST" style="display:inline;" >
+                            <button class="btn btn-info">Edit</button>
+                         </form> -->
+                        <form action="{{ url_for('delete_appointment', appointment_id=appointment.id) }}" method="POST" style="display:inline;" onsubmit="return confirmDelete();">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>                    
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <script>
+        function confirmDelete() {
+            return confirm('Are you sure you want to delete this appointment? This action cannot be undone.');
+        }
+    </script>
+    
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
